@@ -35,8 +35,25 @@ namespace LoggingKata
 
             // TODO: Create two `ITrackable` variables with initial values of `null`. These will be used to store your two taco bells that are the farthest from each other.
             // Create a `double` variable to store the distance
+            ITrackable loc1 = null;
+            ITrackable loc2 = null;
+            double distance = 0;
+
+            foreach (var tacoBell1 in locations)
+            {
+                foreach (var tacobell2 in locations)
+                {
+
+                }
+
+            }
+
+
+
 
             // Include the Geolocation toolbox, so you can compare locations: `using GeoCoordinatePortable;`
+            //var geo = new GeoCoordinate();
+            //geo.getdistanceto
 
             //HINT NESTED LOOPS SECTION---------------------
             // Do a loop for your locations to grab each location as the origin (perhaps: `locA`)
@@ -53,7 +70,7 @@ namespace LoggingKata
             // Once you've looped through everything, you've found the two Taco Bells farthest away from each other.
 
 
-            
+
         }
     }
 }
