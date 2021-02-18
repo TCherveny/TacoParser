@@ -82,6 +82,27 @@ namespace LoggingKata
                 $"{loc2.Name} \n" +
                 $"are the furthest apart!!!");
 
+            foreach (var tacoBell1 in locations)
+            {
+                var geo1 = new GeoCoordinate(tacoBell1.Location.Latitude, tacoBell1.Location.Longitude);
+                foreach (var tacoBell2 in locations)
+                {
+                    var geo2 = new GeoCoordinate(tacoBell2.Location.Latitude, tacoBell2.Location.Longitude);
+
+                    if (geo2.GetDistanceTo(geo1) < distance && distance > 0)
+                    {
+                        distance = geo2.GetDistanceTo(geo1);
+                        loc1 = tacoBell1;
+                        loc2 = tacoBell2;
+                    }
+                }
+
+            }
+            Console.WriteLine($"{loc1.Name} \n" +
+                $"and \n" +
+                $"{loc2.Name} \n" +
+                $"are the closest!!!");
+
         }
     }
 }
