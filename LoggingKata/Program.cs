@@ -36,8 +36,14 @@ namespace LoggingKata
             // TODO: Create two `ITrackable` variables with initial values of `null`. These will be used to store your two taco bells that are the farthest from each other.
             // Create a `double` variable to store the distance
             ITrackable loc1 = null;
+
             ITrackable loc2 = null;
+            ITrackable loc1a = null;
+
+            ITrackable loc2a = null;
+
             double distance = 0;
+            double distanceShort = 591949.4368923764;
 
             foreach (var tacoBell1 in locations)
             {
@@ -51,12 +57,15 @@ namespace LoggingKata
                         distance = geo2.GetDistanceTo(geo1);
                         loc1 = tacoBell1;
                         loc2 = tacoBell2;
+                        loc1a = tacoBell1;
+                        loc2a = tacoBell2;
+
                     }
                 }
 
             }
 
-
+                                                      
 
 
             // Include the Geolocation toolbox, so you can compare locations: `using GeoCoordinatePortable;`
@@ -80,27 +89,33 @@ namespace LoggingKata
             Console.WriteLine($"{loc1.Name} \n" +
                 $"and \n" +
                 $"{loc2.Name} \n" +
-                $"are the furthest apart!!!");
+                $"are the furthest apart!!! \n" +
+                $"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 
-            foreach (var tacoBell1 in locations)
+            foreach (var tacoBell1a in locations)
             {
-                var geo1 = new GeoCoordinate(tacoBell1.Location.Latitude, tacoBell1.Location.Longitude);
-                foreach (var tacoBell2 in locations)
+                var geo1a = new GeoCoordinate(tacoBell1a.Location.Latitude, tacoBell1a.Location.Longitude);
+                foreach (var tacoBell2a in locations)
                 {
-                    var geo2 = new GeoCoordinate(tacoBell2.Location.Latitude, tacoBell2.Location.Longitude);
-
-                    if (geo2.GetDistanceTo(geo1) < distance && distance > 0)
+                    var geo2a = new GeoCoordinate(tacoBell2a.Location.Latitude, tacoBell2a.Location.Longitude);
+                    distanceShort = geo2a.GetDistanceTo(geo1a);
+                    if (tacoBell1a != tacoBell2a)
                     {
-                        distance = geo2.GetDistanceTo(geo1);
-                        loc1 = tacoBell1;
-                        loc2 = tacoBell2;
+
+
+                        if (geo2a.GetDistanceTo(geo1a) < distanceShort)
+                        {
+                            distanceShort = geo2a.GetDistanceTo(geo1a);
+                            loc1a = tacoBell1a;
+                            loc2a = tacoBell2a;
+                        }
                     }
                 }
 
             }
-            Console.WriteLine($"{loc1.Name} \n" +
+            Console.WriteLine($"{loc1a.Name} \n" +
                 $"and \n" +
-                $"{loc2.Name} \n" +
+                $"{loc2a.Name} \n" +
                 $"are the closest!!!");
 
         }
